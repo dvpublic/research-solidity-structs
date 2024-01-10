@@ -9,6 +9,13 @@ import { HardhatRuntimeEnvironment } from 'hardhat/types';
 export const WAIT_BLOCKS_BETWEEN_DEPLOY = 50;
 
 const libraries = new Map<string, string[]>([
+  ["CreateStruct4Int", ["CreateLib"]],
+  ["CreateStruct10UInt", ["CreateLib"]],
+  ["CreateComplex1", ["CreateLib"]],
+  ["PassStruct4Int", ["PassLib"]],
+  ["PassStruct10Uint", ["PassLib"]],
+  ["PassComplex1", ["PassLib"]],
+  ["NItems", ["NItemsLib"]],
 ]);
 const log: Logger<undefined> = new Logger(logSettings);
 
