@@ -4,172 +4,241 @@ pragma solidity 0.8.4;
 import {IDataTypes} from "../interfaces/IDataTypes.sol";
 
 library PassLib {
-  function _useStruct4IntMemory(IDataTypes.Struct4Int memory dest, int32 value) internal pure returns (int) {
+  function _useStruct4IntMemory(IDataTypes.Struct4Int memory dest) internal pure returns (int) {
     dest; // hide warning
-    return value;
+    return 0;
   }
-  function useStruct4IntMemory(IDataTypes.Struct4Int memory dest, int32 value) external pure returns (int) {
+  function useStruct4IntMemory(IDataTypes.Struct4Int memory dest) external pure returns (int) {
     dest; // hide warning
-    return value;
+    return 0;
   }
-  function useStruct4IntCalldata(IDataTypes.Struct4Int calldata dest, int32 value) external pure returns (int) {
+  function useStruct4IntCalldata(IDataTypes.Struct4Int calldata dest) external pure returns (int) {
     dest; // hide warning
-    return value;
+    return 0;
   }
 
 
-  function _useStruct10UIntMemory(IDataTypes.Struct10UInt memory dest, uint value) internal pure returns (uint) {
+  function _useStruct10UIntMemory(IDataTypes.Struct10UInt memory dest) internal pure returns (uint) {
     dest; // hide warning
-    return value;
+    return 0;
   }
-  function useStruct10UIntMemory(IDataTypes.Struct10UInt memory dest, uint value) external pure returns (uint) {
+  function useStruct10UIntMemory(IDataTypes.Struct10UInt memory dest) external pure returns (uint) {
     dest; // hide warning
-    return value;
+    return 0;
   }
-  function useStruct10UIntCalldata(IDataTypes.Struct10UInt calldata dest, uint value) external pure returns (uint) {
+  function useStruct10UIntCalldata(IDataTypes.Struct10UInt calldata dest) external pure returns (uint) {
     dest; // hide warning
-    return value;
-  }
-
-  function _useStruct20UIntMemory(IDataTypes.Struct20UInt memory dest, uint value) internal pure returns (uint) {
-    dest; // hide warning
-    return value;
-  }
-  function useStruct20UIntMemory(IDataTypes.Struct20UInt memory dest, uint value) external pure returns (uint) {
-    dest; // hide warning
-    return value;
-  }
-  function useStruct20UIntCalldata(IDataTypes.Struct20UInt calldata dest, uint value) external pure returns (uint) {
-    dest; // hide warning
-    return value;
+    return 0;
   }
 
-
-  function _useStruct30UIntMemory(IDataTypes.Struct30UInt memory dest, uint value) internal pure returns (uint) {
+  function _useStruct20UIntMemory(IDataTypes.Struct20UInt memory dest) internal pure returns (uint) {
     dest; // hide warning
-    return value;
+    return 0;
   }
-  function useStruct30UIntMemory(IDataTypes.Struct30UInt memory dest, uint value) external pure returns (uint) {
+  function useStruct20UIntMemory(IDataTypes.Struct20UInt memory dest) external pure returns (uint) {
     dest; // hide warning
-    return value;
+    return 0;
   }
-  function useStruct30UIntCalldata(IDataTypes.Struct30UInt calldata dest, uint value) external pure returns (uint) {
+  function useStruct20UIntCalldata(IDataTypes.Struct20UInt calldata dest) external pure returns (uint) {
     dest; // hide warning
-    return value;
+    return 0;
   }
 
 
-  function _useComplexOrderedMemory(IDataTypes.ComplexOrdered memory dest, uint value) internal pure returns (uint) {
+  function _useStruct30UIntMemory(IDataTypes.Struct30UInt memory dest) internal pure returns (uint) {
     dest; // hide warning
-    return value;
+    return 0;
   }
-  function useComplexOrderedMemory(IDataTypes.ComplexOrdered memory dest, uint value) external pure returns (uint) {
+  function useStruct30UIntMemory(IDataTypes.Struct30UInt memory dest) external pure returns (uint) {
     dest; // hide warning
-    return value;
+    return 0;
   }
-  function useComplexOrderedCalldata(IDataTypes.ComplexOrdered calldata dest, uint value) external pure returns (uint) {
+  function useStruct30UIntCalldata(IDataTypes.Struct30UInt calldata dest) external pure returns (uint) {
     dest; // hide warning
-    return value;
+    return 0;
   }
 
 
-  function _useComplexUnorderedMemory(IDataTypes.ComplexUnordered memory dest, uint value) internal pure returns (uint) {
+  function _useComplexOrderedMemory(IDataTypes.ComplexOrdered memory dest) internal pure returns (uint) {
     dest; // hide warning
-    return value;
+    return 0;
   }
-  function useComplexUnorderedMemory(IDataTypes.ComplexUnordered memory dest, uint value) external pure returns (uint) {
+  function useComplexOrderedMemory(IDataTypes.ComplexOrdered memory dest) external pure returns (uint) {
     dest; // hide warning
-    return value;
+    return 0;
   }
-  function useComplexUnorderedCalldata(IDataTypes.ComplexUnordered calldata dest, uint value) external pure returns (uint) {
+  function useComplexOrderedCalldata(IDataTypes.ComplexOrdered calldata dest) external pure returns (uint) {
     dest; // hide warning
-    return value;
+    return 0;
   }
 
 
-  function _usePureVars10UIntMemory(uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint value) internal pure returns (uint) {
-    return value;
+  function _useComplexUnorderedMemory(IDataTypes.ComplexUnordered memory dest) internal pure returns (uint) {
+    dest; // hide warning
+    return 0;
   }
-  function usePureVars10UIntMemory(uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint value) external pure returns (uint) {
-    return value;
+  function useComplexUnorderedMemory(IDataTypes.ComplexUnordered memory dest) external pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+  function useComplexUnorderedCalldata(IDataTypes.ComplexUnordered calldata dest) external pure returns (uint) {
+    dest; // hide warning
+    return 0;
   }
 
 
-  function _useDynArrayUIntMemory(uint[] memory dest, uint value) internal pure returns (uint) {
-    dest; // hide warning
-    return value;
+  function _usePureVars10UIntMemory(uint, uint, uint, uint, uint, uint, uint, uint, uint, uint) internal pure returns (uint) {
+    return 0;
   }
-  function useDynArrayUIntMemory(uint[] memory dest, uint value) external pure returns (uint) {
-    dest; // hide warning
-    return value;
-  }
-  function useDynArrayUIntCalldata(uint[] calldata dest, uint value) external pure returns (uint) {
-    dest; // hide warning
-    return value;
+  function usePureVars10UIntMemory(uint, uint, uint, uint, uint, uint, uint, uint, uint, uint) external pure returns (uint) {
+    return 0;
   }
 
 
-  function _useStatArray10UIntMemory(uint[10] memory dest, uint value) internal pure returns (uint) {
+  function _useDynArrayUIntMemory(uint[] memory dest) internal pure returns (uint) {
     dest; // hide warning
-    return value;
+    return 0;
   }
-  function useStatArray10UIntMemory(uint[10] memory dest, uint value) external pure returns (uint) {
+  function useDynArrayUIntMemory(uint[] memory dest) external pure returns (uint) {
     dest; // hide warning
-    return value;
+    return 0;
   }
-  function useStatArray10UIntCalldata(uint[10] calldata dest, uint value) external pure returns (uint) {
+  function useDynArrayUIntCalldata(uint[] calldata dest) external pure returns (uint) {
     dest; // hide warning
-    return value;
+    return 0;
+  }
+
+
+  function _useStatArray10UIntMemory(uint[10] memory dest) internal pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+  function useStatArray10UIntMemory(uint[10] memory dest) external pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+  function useStatArray10UIntCalldata(uint[10] calldata dest) external pure returns (uint) {
+    dest; // hide warning
+    return 0;
   }
 
 
 
-  function _useStruct10UInt8Memory(IDataTypes.Struct10UInt8 memory dest, uint value) internal pure returns (uint) {
+  function _useStruct10UInt8Memory(IDataTypes.Struct10UInt8 memory dest) internal pure returns (uint) {
     dest; // hide warning
-    return value;
+    return 0;
   }
-  function useStruct10UInt8Memory(IDataTypes.Struct10UInt8 memory dest, uint value) external pure returns (uint) {
+  function useStruct10UInt8Memory(IDataTypes.Struct10UInt8 memory dest) external pure returns (uint) {
     dest; // hide warning
-    return value;
+    return 0;
   }
-  function useStruct10UInt8Calldata(IDataTypes.Struct10UInt8 calldata dest, uint value) external pure returns (uint) {
+  function useStruct10UInt8Calldata(IDataTypes.Struct10UInt8 calldata dest) external pure returns (uint) {
     dest; // hide warning
-    return value;
+    return 0;
   }
 
 
-  function _usePureVars10UInt8Memory(uint8, uint8, uint8, uint8, uint8, uint8, uint8, uint8, uint8, uint8, uint value) internal pure returns (uint) {
-    return value;
+  function _usePureVars10UInt8Memory(uint8, uint8, uint8, uint8, uint8, uint8, uint8, uint8, uint8, uint8) internal pure returns (uint) {
+    return 0;
   }
-  function usePureVars10UInt8Memory(uint8, uint8, uint8, uint8, uint8, uint8, uint8, uint8, uint8, uint8, uint value) external pure returns (uint) {
-    return value;
-  }
-
-
-  function _useDynArrayUInt8Memory(uint8[] memory dest, uint value) internal pure returns (uint) {
-    dest; // hide warning
-    return value;
-  }
-  function useDynArrayUInt8Memory(uint8[] memory dest, uint value) external pure returns (uint) {
-    dest; // hide warning
-    return value;
-  }
-  function useDynArrayUInt8Calldata(uint8[] calldata dest, uint value) external pure returns (uint) {
-    dest; // hide warning
-    return value;
+  function usePureVars10UInt8Memory(uint8, uint8, uint8, uint8, uint8, uint8, uint8, uint8, uint8, uint8) external pure returns (uint) {
+    return 0;
   }
 
 
-  function _useStatArray10UInt8Memory(uint8[10] memory dest, uint value) internal pure returns (uint) {
+  function _useDynArrayUInt8Memory(uint8[] memory dest) internal pure returns (uint) {
     dest; // hide warning
-    return value;
+    return 0;
   }
-  function useStatArray10UInt8Memory(uint8[10] memory dest, uint value) external pure returns (uint) {
+  function useDynArrayUInt8Memory(uint8[] memory dest) external pure returns (uint) {
     dest; // hide warning
-    return value;
+    return 0;
   }
-  function useStatArray10UInt8Calldata(uint8[10] calldata dest, uint value) external pure returns (uint) {
+  function useDynArrayUInt8Calldata(uint8[] calldata dest) external pure returns (uint) {
     dest; // hide warning
-    return value;
+    return 0;
+  }
+
+
+  function _useStatArray10UInt8Memory(uint8[10] memory dest) internal pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+  function useStatArray10UInt8Memory(uint8[10] memory dest) external pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+  function useStatArray10UInt8Calldata(uint8[10] calldata dest) external pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+
+
+  function _useStruct10Int32Memory(IDataTypes.Struct10Int32 memory dest) internal pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+  function useStruct10Int32Memory(IDataTypes.Struct10Int32 memory dest) external pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+  function useStruct10Int32Calldata(IDataTypes.Struct10Int32 calldata dest) external pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+
+
+  function _usePureVars10Int32Memory(int32, int32, int32, int32, int32, int32, int32, int32, int32, int32) internal pure returns (uint) {
+    return 0;
+  }
+  function usePureVars10Int32Memory(int32, int32, int32, int32, int32, int32, int32, int32, int32, int32) external pure returns (uint) {
+    return 0;
+  }
+
+  function _useDynArrayInt32Memory(int32[] memory dest) internal pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+  function useDynArrayInt32Memory(int32[] memory dest) external pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+  function useDynArrayInt32Calldata(int32[] calldata dest) external pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+
+  function _useStatArray10Int32Memory(int32[10] memory dest) internal pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+  function useStatArray10Int32Memory(int32[10] memory dest) external pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+  function useStatArray10Int32Calldata(int32[10] calldata dest) external pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+
+
+  function _usePureVarsEmpty() internal pure returns (uint) {
+    return 0;
+  }
+  function usePureVarsEmpty() external pure returns (uint) {
+    return 0;
+  }
+
+  function _useStruct1UIntMemory(IDataTypes.Struct1UInt memory dest) internal pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+  function useStruct1UIntMemory(IDataTypes.Struct1UInt memory dest) external pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+  function useStruct1UIntCalldata(IDataTypes.Struct1UInt calldata dest) external pure returns (uint) {
+    dest; // hide warning
+    return 0;
   }
 }

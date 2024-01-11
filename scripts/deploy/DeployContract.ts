@@ -27,8 +27,16 @@ const libraries = new Map<string, string[]>([
   ["PassDynArrayUint8", ["PassLib"]],
   ["PassStatArray10Uint8", ["PassLib"]],
 
+  ["PassStruct10Int32", ["PassLib"]],
+  ["PassPureVars10Int32", ["PassLib"]],
+  ["PassDynArrayInt32", ["PassLib"]],
+  ["PassStatArray10Int32", ["PassLib"]],
+
   ["PassStruct20UInt", ["PassLib"]],
   ["PassStruct30UInt", ["PassLib"]],
+
+  ["PassPureVarsEmpty", ["PassLib"]],
+  ["PassStruct1UInt", ["PassLib"]],
 
   ["NItems", ["NItemsLib"]],
 ]);

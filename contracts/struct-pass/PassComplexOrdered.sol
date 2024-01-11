@@ -11,7 +11,7 @@ contract PassComplexOrdered {
   function callMemoryToMemoryInternal(IDataTypes.ComplexOrdered memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      receiveAsMemoryInternal(data, i);
+      receiveAsMemoryInternal(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -19,7 +19,7 @@ contract PassComplexOrdered {
   function callMemoryToMemoryPublic(IDataTypes.ComplexOrdered memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      receiveAsMemoryPublic(data, i);
+      receiveAsMemoryPublic(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -27,7 +27,7 @@ contract PassComplexOrdered {
   function callCalldataToCalldataInternal(IDataTypes.ComplexOrdered calldata data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      receiveAsCalldataInternal(data, i);
+      receiveAsCalldataInternal(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -35,7 +35,7 @@ contract PassComplexOrdered {
   function callCalldataToCalldataPublic(IDataTypes.ComplexOrdered calldata data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      receiveAsCalldataPublic(data, i);
+      receiveAsCalldataPublic(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -43,7 +43,7 @@ contract PassComplexOrdered {
   function callCalldataToMemoryInternal(IDataTypes.ComplexOrdered calldata data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      receiveAsMemoryInternal(data, i);
+      receiveAsMemoryInternal(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -51,7 +51,7 @@ contract PassComplexOrdered {
   function callCalldataToMemoryPublic(IDataTypes.ComplexOrdered calldata data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      receiveAsMemoryPublic(data, i);
+      receiveAsMemoryPublic(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -59,7 +59,7 @@ contract PassComplexOrdered {
   function callMemoryToMemoryLibExt(IDataTypes.ComplexOrdered memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      PassLib.useComplexOrderedMemory(data, i);
+      PassLib.useComplexOrderedMemory(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -67,7 +67,7 @@ contract PassComplexOrdered {
   function callMemoryToCalldataLibExt(IDataTypes.ComplexOrdered memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      PassLib.useComplexOrderedCalldata(data, i);
+      PassLib.useComplexOrderedCalldata(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -75,25 +75,25 @@ contract PassComplexOrdered {
   function callMemoryToMemoryLibInt(IDataTypes.ComplexOrdered memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      PassLib._useComplexOrderedMemory(data, i);
+      PassLib._useComplexOrderedMemory(data);
     }
     gasUsed = gas0 - gasleft();
   }
 
-  function receiveAsMemoryInternal(IDataTypes.ComplexOrdered memory m, uint value) internal pure returns (uint) {
+  function receiveAsMemoryInternal(IDataTypes.ComplexOrdered memory m) internal pure returns (uint) {
     m; // hide warning
-    return value;
+    return 0;
   }
-  function receiveAsMemoryPublic(IDataTypes.ComplexOrdered memory m, uint value) public pure returns (uint) {
+  function receiveAsMemoryPublic(IDataTypes.ComplexOrdered memory m) public pure returns (uint) {
     m; // hide warning
-    return value;
+    return 0;
   }
-  function receiveAsCalldataInternal(IDataTypes.ComplexOrdered calldata m, uint value) internal pure returns (uint) {
+  function receiveAsCalldataInternal(IDataTypes.ComplexOrdered calldata m) internal pure returns (uint) {
     m; // hide warning
-    return value;
+    return 0;
   }
-  function receiveAsCalldataPublic(IDataTypes.ComplexOrdered calldata m, uint value) public pure returns (uint) {
+  function receiveAsCalldataPublic(IDataTypes.ComplexOrdered calldata m) public pure returns (uint) {
     m; // hide warning
-    return value;
+    return 0;
   }
 }

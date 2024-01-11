@@ -34,6 +34,10 @@ interface IDataTypes {
     uint j;
   }
 
+  struct Struct1UInt {
+    uint a;
+  }
+
   struct Struct10UInt8 {
     uint8 a;
     uint8 b;
@@ -45,6 +49,19 @@ interface IDataTypes {
     uint8 h;
     uint8 i;
     uint8 j;
+  }
+
+  struct Struct10Int32 {
+    int32 a;
+    int32 b;
+    int32 c;
+    int32 d;
+    int32 e;
+    int32 f;
+    int32 g;
+    int32 h;
+    int32 i;
+    int32 j;
   }
 
   struct Struct20UInt {

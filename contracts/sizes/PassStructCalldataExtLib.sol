@@ -3,9 +3,9 @@ pragma solidity 0.8.4;
 
 import {IDataTypes} from "../interfaces/IDataTypes.sol";
 
-library PassArrayIntLib {
+library PassStructCalldataExtLib {
 
-  function acceptStruct(uint[] memory) internal pure {
+  function acceptStruct(IDataTypes.Struct10UInt calldata) external pure {
 
   }
 

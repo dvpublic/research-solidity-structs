@@ -11,7 +11,7 @@ contract PassDynArrayUint {
   function callMemoryToMemoryInternal(uint[] memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      receiveAsMemoryInternal(data, i);
+      receiveAsMemoryInternal(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -19,7 +19,7 @@ contract PassDynArrayUint {
   function callMemoryToMemoryPublic(uint[] memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      receiveAsMemoryPublic(data, i);
+      receiveAsMemoryPublic(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -27,7 +27,7 @@ contract PassDynArrayUint {
   function callCalldataToCalldataInternal(uint[] calldata data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      receiveAsCalldataInternal(data, i);
+      receiveAsCalldataInternal(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -35,7 +35,7 @@ contract PassDynArrayUint {
   function callCalldataToCalldataPublic(uint[] calldata data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      receiveAsCalldataPublic(data, i);
+      receiveAsCalldataPublic(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -43,7 +43,7 @@ contract PassDynArrayUint {
   function callCalldataToMemoryInternal(uint[] calldata data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      receiveAsMemoryInternal(data, i);
+      receiveAsMemoryInternal(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -51,7 +51,7 @@ contract PassDynArrayUint {
   function callCalldataToMemoryPublic(uint[] calldata data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      receiveAsMemoryPublic(data, i);
+      receiveAsMemoryPublic(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -59,7 +59,7 @@ contract PassDynArrayUint {
   function callMemoryToMemoryLibExt(uint[] memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      PassLib.useDynArrayUIntMemory(data, i);
+      PassLib.useDynArrayUIntMemory(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -67,7 +67,7 @@ contract PassDynArrayUint {
   function callMemoryToCalldataLibExt(uint[] memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      PassLib.useDynArrayUIntCalldata(data, i);
+      PassLib.useDynArrayUIntCalldata(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -75,25 +75,25 @@ contract PassDynArrayUint {
   function callMemoryToMemoryLibInt(uint[] memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      PassLib._useDynArrayUIntMemory(data, i);
+      PassLib._useDynArrayUIntMemory(data);
     }
     gasUsed = gas0 - gasleft();
   }
 
-  function receiveAsMemoryInternal(uint[] memory m, uint value) internal pure returns (uint) {
+  function receiveAsMemoryInternal(uint[] memory m) internal pure returns (uint) {
     m; // hide warning
-    return value;
+    return 0;
   }
-  function receiveAsMemoryPublic(uint[] memory m, uint value) public pure returns (uint) {
+  function receiveAsMemoryPublic(uint[] memory m) public pure returns (uint) {
     m; // hide warning
-    return value;
+    return 0;
   }
-  function receiveAsCalldataInternal(uint[] calldata m, uint value) internal pure returns (uint) {
+  function receiveAsCalldataInternal(uint[] calldata m) internal pure returns (uint) {
     m; // hide warning
-    return value;
+    return 0;
   }
-  function receiveAsCalldataPublic(uint[] calldata m, uint value) public pure returns (uint) {
+  function receiveAsCalldataPublic(uint[] calldata m) public pure returns (uint) {
     m; // hide warning
-    return value;
+    return 0;
   }
 }

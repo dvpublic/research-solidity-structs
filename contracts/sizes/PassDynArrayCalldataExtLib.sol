@@ -3,10 +3,10 @@ pragma solidity 0.8.4;
 
 import {IDataTypes} from "../interfaces/IDataTypes.sol";
 
-library ReturnArrayIntLib {
+library PassDynArrayCalldataExtLib {
 
-  function returnStruct() internal pure returns (uint[] memory dest) {
-    return dest;
+  function acceptStruct(uint[] calldata) external pure {
+
   }
 
 }

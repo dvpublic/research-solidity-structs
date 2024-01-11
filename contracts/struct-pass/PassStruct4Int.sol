@@ -58,7 +58,7 @@ contract PassStruct4Int {
   function callMemoryToMemoryLibExt(IDataTypes.Struct4Int memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      PassLib.useStruct4IntMemory(data, int32(int(i)));
+      PassLib.useStruct4IntMemory(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -66,7 +66,7 @@ contract PassStruct4Int {
   function callMemoryToCalldataLibExt(IDataTypes.Struct4Int memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      PassLib.useStruct4IntCalldata(data, int32(int(i)));
+      PassLib.useStruct4IntCalldata(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -74,7 +74,7 @@ contract PassStruct4Int {
   function callMemoryToMemoryLibInt(IDataTypes.Struct4Int memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      PassLib._useStruct4IntMemory(data, int32(int(i)));
+      PassLib._useStruct4IntMemory(data);
     }
     gasUsed = gas0 - gasleft();
   }

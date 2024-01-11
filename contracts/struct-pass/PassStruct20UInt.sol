@@ -11,7 +11,7 @@ contract PassStruct20UInt {
   function callMemoryToMemoryInternal(IDataTypes.Struct20UInt memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      receiveAsMemoryInternal(data, i);
+      receiveAsMemoryInternal(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -19,7 +19,7 @@ contract PassStruct20UInt {
   function callMemoryToMemoryPublic(IDataTypes.Struct20UInt memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      receiveAsMemoryPublic(data, i);
+      receiveAsMemoryPublic(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -27,7 +27,7 @@ contract PassStruct20UInt {
   function callCalldataToCalldataInternal(IDataTypes.Struct20UInt calldata data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      receiveAsCalldataInternal(data, i);
+      receiveAsCalldataInternal(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -35,7 +35,7 @@ contract PassStruct20UInt {
   function callCalldataToCalldataPublic(IDataTypes.Struct20UInt calldata data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      receiveAsCalldataPublic(data, i);
+      receiveAsCalldataPublic(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -43,7 +43,7 @@ contract PassStruct20UInt {
   function callCalldataToMemoryInternal(IDataTypes.Struct20UInt calldata data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      receiveAsMemoryInternal(data, i);
+      receiveAsMemoryInternal(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -51,7 +51,7 @@ contract PassStruct20UInt {
   function callCalldataToMemoryPublic(IDataTypes.Struct20UInt calldata data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      receiveAsMemoryPublic(data, i);
+      receiveAsMemoryPublic(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -59,7 +59,7 @@ contract PassStruct20UInt {
   function callMemoryToMemoryLibExt(IDataTypes.Struct20UInt memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      PassLib.useStruct20UIntMemory(data, i);
+      PassLib.useStruct20UIntMemory(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -67,7 +67,7 @@ contract PassStruct20UInt {
   function callMemoryToCalldataLibExt(IDataTypes.Struct20UInt memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      PassLib.useStruct20UIntCalldata(data, i);
+      PassLib.useStruct20UIntCalldata(data);
     }
     gasUsed = gas0 - gasleft();
   }
@@ -75,25 +75,25 @@ contract PassStruct20UInt {
   function callMemoryToMemoryLibInt(IDataTypes.Struct20UInt memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      PassLib._useStruct20UIntMemory(data, i);
+      PassLib._useStruct20UIntMemory(data);
     }
     gasUsed = gas0 - gasleft();
   }
 
-  function receiveAsMemoryInternal(IDataTypes.Struct20UInt memory m, uint value) internal pure returns (uint) {
+  function receiveAsMemoryInternal(IDataTypes.Struct20UInt memory m) internal pure returns (uint) {
     m; // hide warning
-    return value;
+    return 0;
   }
-  function receiveAsMemoryPublic(IDataTypes.Struct20UInt memory m, uint value) public pure returns (uint) {
+  function receiveAsMemoryPublic(IDataTypes.Struct20UInt memory m) public pure returns (uint) {
     m; // hide warning
-    return value;
+    return 0;
   }
-  function receiveAsCalldataInternal(IDataTypes.Struct20UInt calldata m, uint value) internal pure returns (uint) {
+  function receiveAsCalldataInternal(IDataTypes.Struct20UInt calldata m) internal pure returns (uint) {
     m; // hide warning
-    return value;
+    return 0;
   }
-  function receiveAsCalldataPublic(IDataTypes.Struct20UInt calldata m, uint value) public pure returns (uint) {
+  function receiveAsCalldataPublic(IDataTypes.Struct20UInt calldata m) public pure returns (uint) {
     m; // hide warning
-    return value;
+    return 0;
   }
 }
