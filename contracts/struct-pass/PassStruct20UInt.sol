@@ -5,10 +5,10 @@ import {IDataTypes} from "../interfaces/IDataTypes.sol";
 import "../libs/CreateLib.sol";
 import "../libs/PassLib.sol";
 
-contract PassStruct10Uint {
+contract PassStruct20UInt {
   uint public gasUsed;
 
-  function callMemoryToMemoryInternal(IDataTypes.Struct10UInt memory data, uint count) external {
+  function callMemoryToMemoryInternal(IDataTypes.Struct20UInt memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
       receiveAsMemoryInternal(data, i);
@@ -16,7 +16,7 @@ contract PassStruct10Uint {
     gasUsed = gas0 - gasleft();
   }
 
-  function callMemoryToMemoryPublic(IDataTypes.Struct10UInt memory data, uint count) external {
+  function callMemoryToMemoryPublic(IDataTypes.Struct20UInt memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
       receiveAsMemoryPublic(data, i);
@@ -24,7 +24,7 @@ contract PassStruct10Uint {
     gasUsed = gas0 - gasleft();
   }
 
-  function callCalldataToCalldataInternal(IDataTypes.Struct10UInt calldata data, uint count) external {
+  function callCalldataToCalldataInternal(IDataTypes.Struct20UInt calldata data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
       receiveAsCalldataInternal(data, i);
@@ -32,7 +32,7 @@ contract PassStruct10Uint {
     gasUsed = gas0 - gasleft();
   }
 
-  function callCalldataToCalldataPublic(IDataTypes.Struct10UInt calldata data, uint count) external {
+  function callCalldataToCalldataPublic(IDataTypes.Struct20UInt calldata data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
       receiveAsCalldataPublic(data, i);
@@ -40,7 +40,7 @@ contract PassStruct10Uint {
     gasUsed = gas0 - gasleft();
   }
 
-  function callCalldataToMemoryInternal(IDataTypes.Struct10UInt calldata data, uint count) external {
+  function callCalldataToMemoryInternal(IDataTypes.Struct20UInt calldata data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
       receiveAsMemoryInternal(data, i);
@@ -48,7 +48,7 @@ contract PassStruct10Uint {
     gasUsed = gas0 - gasleft();
   }
 
-  function callCalldataToMemoryPublic(IDataTypes.Struct10UInt calldata data, uint count) external {
+  function callCalldataToMemoryPublic(IDataTypes.Struct20UInt calldata data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
       receiveAsMemoryPublic(data, i);
@@ -56,43 +56,43 @@ contract PassStruct10Uint {
     gasUsed = gas0 - gasleft();
   }
 
-  function callMemoryToMemoryLibExt(IDataTypes.Struct10UInt memory data, uint count) external {
+  function callMemoryToMemoryLibExt(IDataTypes.Struct20UInt memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      PassLib.useStruct10UIntMemory(data, i);
+      PassLib.useStruct20UIntMemory(data, i);
     }
     gasUsed = gas0 - gasleft();
   }
 
-  function callMemoryToCalldataLibExt(IDataTypes.Struct10UInt memory data, uint count) external {
+  function callMemoryToCalldataLibExt(IDataTypes.Struct20UInt memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      PassLib.useStruct10UIntCalldata(data, i);
+      PassLib.useStruct20UIntCalldata(data, i);
     }
     gasUsed = gas0 - gasleft();
   }
 
-  function callMemoryToMemoryLibInt(IDataTypes.Struct10UInt memory data, uint count) external {
+  function callMemoryToMemoryLibInt(IDataTypes.Struct20UInt memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      PassLib._useStruct10UIntMemory(data, i);
+      PassLib._useStruct20UIntMemory(data, i);
     }
     gasUsed = gas0 - gasleft();
   }
 
-  function receiveAsMemoryInternal(IDataTypes.Struct10UInt memory m, uint value) internal pure returns (uint) {
+  function receiveAsMemoryInternal(IDataTypes.Struct20UInt memory m, uint value) internal pure returns (uint) {
     m; // hide warning
     return value;
   }
-  function receiveAsMemoryPublic(IDataTypes.Struct10UInt memory m, uint value) public pure returns (uint) {
+  function receiveAsMemoryPublic(IDataTypes.Struct20UInt memory m, uint value) public pure returns (uint) {
     m; // hide warning
     return value;
   }
-  function receiveAsCalldataInternal(IDataTypes.Struct10UInt calldata m, uint value) internal pure returns (uint) {
+  function receiveAsCalldataInternal(IDataTypes.Struct20UInt calldata m, uint value) internal pure returns (uint) {
     m; // hide warning
     return value;
   }
-  function receiveAsCalldataPublic(IDataTypes.Struct10UInt calldata m, uint value) public pure returns (uint) {
+  function receiveAsCalldataPublic(IDataTypes.Struct20UInt calldata m, uint value) public pure returns (uint) {
     m; // hide warning
     return value;
   }

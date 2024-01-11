@@ -80,15 +80,19 @@ contract PassStruct4Int {
   }
 
   function receiveAsMemoryInternal(IDataTypes.Struct4Int memory m) internal pure returns (int32) {
-    return m.a + m.b + m.c + m.d;
+    m; // hide warning
+    return 0;
   }
   function receiveAsMemoryPublic(IDataTypes.Struct4Int memory m) public pure returns (int32) {
-    return m.a + m.b + m.c + m.d;
+    m; // hide warning
+    return 0;
   }
   function receiveAsCalldataInternal(IDataTypes.Struct4Int calldata m) internal pure returns (int32) {
-    return m.a + m.b + m.c + m.d;
+    m; // hide warning
+    return 0;
   }
   function receiveAsCalldataPublic(IDataTypes.Struct4Int calldata m) public pure returns (int32) {
-    return m.a + m.b + m.c + m.d;
+    m; // hide warning
+    return 0;
   }
 }

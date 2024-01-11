@@ -5,19 +5,19 @@ import "../interfaces/IDataTypes.sol";
 import "../libs/CreateLib.sol";
 import "hardhat/console.sol";
 
-contract CreateComplex1 {
+contract CreateComplexUnordered {
   uint public gasUsed;
-  IDataTypes.Complex1[] public destData;
+  IDataTypes.ComplexUnordered[] public destData;
 
   constructor() {
-    IDataTypes.Complex1 memory firstItem;
+    IDataTypes.ComplexUnordered memory firstItem;
     destData.push(firstItem);
   }
 
   function createEmpty(uint count) external  {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      IDataTypes.Complex1 memory data;
+      IDataTypes.ComplexUnordered memory data;
       destData.push(data);
     }
     gasUsed = gas0 - gasleft();
@@ -26,8 +26,8 @@ contract CreateComplex1 {
   function createManualAssigningHalf(uint count) external  {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      IDataTypes.Complex1 memory data;
-      data.a = 1; data.b = 2; data.c = 3; data.d = 4; data.e = 5;
+      IDataTypes.ComplexUnordered memory data;
+      data.b1 = 1; data.b2 = 2; data.s1 = 7; data.s2 = 8; data.a1 = address(0); data.a2 = address(0); data.t1 = 11;
       destData.push(data);
     }
     gasUsed = gas0 - gasleft();
@@ -36,10 +36,20 @@ contract CreateComplex1 {
   function createManualAssigningFull(uint count) external  {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      IDataTypes.Complex1 memory data;
-      data.a = 1; data.b = 2; data.c = 3; data.d = 4; data.e = 5;
-      data.f = 1; data.g = 2; data.h = 3;
-      data.s4.a = 1; data.s4.b = 2; data.s4.c = 3; data.s4.d = 4;
+      IDataTypes.ComplexUnordered memory data;
+      data.b1 = 1;
+      data.b2 = 2;
+      data.s1 = 7;
+      data.s2 = 8;
+      data.a1 = address(0);
+      data.a2 = address(0);
+      data.t1 = 9;
+      data.t2 = 10;
+      data.u1 = 11;
+      data.u2 = 12;
+      data.s4 = IDataTypes.Struct4Int({a: 1, b: 2, c: 3, d: 4});
+      data.aa1 = new uint[](i);
+      data.aa2 = new uint[](i);
       destData.push(data);
     }
     gasUsed = gas0 - gasleft();
@@ -48,7 +58,13 @@ contract CreateComplex1 {
   function createConstructor(uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      IDataTypes.Complex1 memory data = IDataTypes.Complex1(1, 2, 3, 4, 5, 6, 7, 8, IDataTypes.Struct4Int(1, 2, 3, 4));
+      IDataTypes.ComplexUnordered memory data = IDataTypes.ComplexUnordered(
+        1, 11, 2, 3, 9, 12, address(0), 4,
+        IDataTypes.Struct4Int(1, 2, 3, 4),
+        10, new uint[](i),
+        address(0),
+        new uint[](i)
+      );
       destData.push(data);
     }
     gasUsed = gas0 - gasleft();
@@ -57,9 +73,14 @@ contract CreateComplex1 {
   function createConstructorNamedFields(uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      IDataTypes.Complex1 memory data = IDataTypes.Complex1({
-        a: 1, b: 2, c: 3, d: 4, e: 5,
-        f: 6, g: 7, h: 8, s4: IDataTypes.Struct4Int({a: 1, b: 2, c: 3, d: 4})
+      IDataTypes.ComplexUnordered memory data = IDataTypes.ComplexUnordered({
+        b1 : 1, b2 : 2,
+        s1: 3, s2: 4,
+        a1: address(0), a2: address(0),
+        t1: 9, t2: 10, u1: 11, u2: 12,
+        s4: IDataTypes.Struct4Int({a: 1, b: 2, c: 3, d: 4}),
+        aa1: new uint[](i),
+        aa2: new uint[](i)
       });
       destData.push(data);
     }
@@ -69,7 +90,7 @@ contract CreateComplex1 {
   function createUsingArrayEmpty(uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      IDataTypes.Complex1 memory data = (new IDataTypes.Complex1[](1))[0];
+      IDataTypes.ComplexUnordered memory data = (new IDataTypes.ComplexUnordered[](1))[0];
       destData.push(data);
     }
     gasUsed = gas0 - gasleft();
@@ -78,10 +99,20 @@ contract CreateComplex1 {
   function createUsingArrayManualAssigningFull(uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      IDataTypes.Complex1 memory data = (new IDataTypes.Complex1[](1))[0];
-      data.a = 1; data.b = 2; data.c = 3; data.d = 4; data.e = 5;
-      data.f = 1; data.g = 2; data.h = 3;
-      data.s4.a = 1; data.s4.b = 2; data.s4.c = 3; data.s4.d = 4;
+      IDataTypes.ComplexUnordered memory data = (new IDataTypes.ComplexUnordered[](1))[0];
+      data.b1 = 1;
+      data.b2 = 2;
+      data.s1 = 3;
+      data.s2 = 4;
+      data.a1 = address(0);
+      data.a2 = address(0);
+      data.t1 = 9;
+      data.t2 = 10;
+      data.u1 = 11;
+      data.u2 = 12;
+      data.s4 = IDataTypes.Struct4Int({a: 1, b: 2, c: 3, d: 4});
+      data.aa1 = new uint[](i);
+      data.aa2 = new uint[](i);
       destData.push(data);
     }
     gasUsed = gas0 - gasleft();
@@ -90,8 +121,8 @@ contract CreateComplex1 {
   function createEmptyInitLibInt(uint count) external  {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      IDataTypes.Complex1 memory data;
-      CreateLib._initComplex1(data, int32(int256((i))));
+      IDataTypes.ComplexUnordered memory data;
+      CreateLib._initComplexUnordered(data, i);
       destData.push(data);
     }
     gasUsed = gas0 - gasleft();
@@ -100,21 +131,21 @@ contract CreateComplex1 {
   function createEmptyInitLibExt(uint count) external  {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      IDataTypes.Complex1 memory data = CreateLib.initComplex1(int32(int256((i))));
+      IDataTypes.ComplexUnordered memory data = CreateLib.initComplexUnordered(i);
       destData.push(data);
     }
     gasUsed = gas0 - gasleft();
   }
 
   function createCopy(uint count) external  {
-    IDataTypes.Complex1[] memory cache = new IDataTypes.Complex1[](count);
+    IDataTypes.ComplexUnordered[] memory cache = new IDataTypes.ComplexUnordered[](count);
     for (uint i = 0; i < count; ++i) {
-      CreateLib._initComplex1(cache[i], int32(int256((i))));
+      CreateLib._initComplexUnordered(cache[i], i);
     }
 
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      IDataTypes.Complex1 memory data = cache[i];
+      IDataTypes.ComplexUnordered memory data = cache[i];
       destData.push(data);
     }
     gasUsed = gas0 - gasleft();

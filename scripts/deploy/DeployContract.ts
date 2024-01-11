@@ -11,10 +11,25 @@ export const WAIT_BLOCKS_BETWEEN_DEPLOY = 50;
 const libraries = new Map<string, string[]>([
   ["CreateStruct4Int", ["CreateLib"]],
   ["CreateStruct10UInt", ["CreateLib"]],
-  ["CreateComplex1", ["CreateLib"]],
+  ["CreateComplexOrdered", ["CreateLib"]],
+  ["CreateComplexUnordered", ["CreateLib"]],
   ["PassStruct4Int", ["PassLib"]],
+
+  ["PassComplexOrdered", ["PassLib"]],
+  ["PassComplexUnordered", ["PassLib"]],
   ["PassStruct10Uint", ["PassLib"]],
-  ["PassComplex1", ["PassLib"]],
+  ["PassPureVars10Uint", ["PassLib"]],
+  ["PassDynArrayUint", ["PassLib"]],
+  ["PassStatArray10Uint", ["PassLib"]],
+
+  ["PassStruct10UInt8", ["PassLib"]],
+  ["PassPureVars10Uint8", ["PassLib"]],
+  ["PassDynArrayUint8", ["PassLib"]],
+  ["PassStatArray10Uint8", ["PassLib"]],
+
+  ["PassStruct20UInt", ["PassLib"]],
+  ["PassStruct30UInt", ["PassLib"]],
+
   ["NItems", ["NItemsLib"]],
 ]);
 const log: Logger<undefined> = new Logger(logSettings);

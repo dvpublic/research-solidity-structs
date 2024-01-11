@@ -1,27 +1,33 @@
 import {DeployerUtils} from "../scripts/utils/DeployerUtils";
-import {CreateComplex1, CreateStruct10UInt, CreateStruct4Int} from "../typechain";
+import {
+  CreateComplexOrdered,
+  CreateComplexUnordered,
+  CreateStruct10UInt,
+  CreateStruct4Int
+} from "../typechain";
 import {ethers} from "hardhat";
 import {SignerWithAddress} from "@nomiclabs/hardhat-ethers/signers";
 import {TimeUtils} from "../scripts/utils/TimeUtils";
 import {SaveToCsv} from "../scripts/utils/SaveToCsv";
 
 describe("CreateTest", () => {
-  const COUNT_ITEMS = 10;
+  const COUNT_ITEMS = 1;
 
   let signer: SignerWithAddress;
   let ut4: CreateStruct4Int;
   let ut10: CreateStruct10UInt;
-  let utC1: CreateComplex1;
+  let utC1: CreateComplexOrdered;
+  let utCU: CreateComplexUnordered;
   let snapshot: string;
 
   interface IResults {
     createEmpty?: number;
+    createUsingArrayEmpty?: number;
     createManualAssigningHalf?: number;
     createManualAssigningFull?: number;
+    createUsingArrayManualAssigningFull?: number;
     createConstructor?: number;
     createConstructorNamedFields?: number;
-    createUsingArrayEmpty?: number;
-    createUsingArrayManualAssigningFull?: number;
     createEmptyInitLibInt?: number;
     createEmptyInitLibExt?: number;
     createCopy?: number;
@@ -32,7 +38,8 @@ describe("CreateTest", () => {
 
     ut10 = (await DeployerUtils.deployContract(signer, 'CreateStruct10UInt',)) as CreateStruct10UInt;
     ut4 = (await DeployerUtils.deployContract(signer, 'CreateStruct4Int',)) as CreateStruct4Int;
-    utC1 = (await DeployerUtils.deployContract(signer, 'CreateComplex1',)) as CreateComplex1;
+    utC1 = (await DeployerUtils.deployContract(signer, 'CreateComplexOrdered',)) as CreateComplexOrdered;
+    utCU = (await DeployerUtils.deployContract(signer, 'CreateComplexUnordered',)) as CreateComplexUnordered;
   })
 
   after(async function () {
@@ -48,7 +55,7 @@ describe("CreateTest", () => {
   });
 
   async function createAll(
-    ut: CreateStruct4Int | CreateStruct10UInt | CreateComplex1
+    ut: CreateStruct4Int | CreateStruct10UInt | CreateComplexOrdered | CreateComplexUnordered
   ): Promise<IResults> {
     let r: IResults = {};
     await ut.createEmpty(COUNT_ITEMS);
@@ -197,7 +204,7 @@ describe("CreateTest", () => {
       console.log(r);
     });
   });
-  describe("CreateComplex1", () => {
+  describe("CreateComplexOrdered", () => {
     it("createEmpty", async () => {
       await utC1.createEmpty(COUNT_ITEMS);
       console.log("create empty, don't assign any fields", await utC1.gasUsed());
@@ -253,17 +260,75 @@ describe("CreateTest", () => {
       console.log(r);
     });
   });
+  describe("CreateComplexUnordered", () => {
+    it("createEmpty", async () => {
+      await utCU.createEmpty(COUNT_ITEMS);
+      console.log("create empty, don't assign any fields", await utCU.gasUsed());
+    });
+
+    it("createManualAssigningHalf", async () => {
+      await utCU.createManualAssigningHalf(COUNT_ITEMS);
+      console.log("create empty, manual assign half fields", await utCU.gasUsed());
+    });
+
+    it("createManualAssigningFull", async () => {
+      await utCU.createManualAssigningFull(COUNT_ITEMS);
+      console.log("create empty, manual assign all fields", await utCU.gasUsed());
+    });
+
+    it("createConstructor", async () => {
+      await utCU.createConstructor(COUNT_ITEMS);
+      console.log("create constructor", await utCU.gasUsed());
+    });
+
+    it("createConstructorNamedFields", async () => {
+      await utCU.createConstructorNamedFields(COUNT_ITEMS);
+      console.log("create constructor named fields", await utCU.gasUsed());
+    });
+
+    it("createUsingArrayEmpty", async () => {
+      await utCU.createUsingArrayEmpty(COUNT_ITEMS);
+      console.log("create empty using array", await utCU.gasUsed());
+    });
+
+    it("createUsingArrayManualAssigningFull", async () => {
+      await utCU.createUsingArrayManualAssigningFull(COUNT_ITEMS);
+      console.log("create empty using array, manually assing all fields", await utCU.gasUsed());
+    });
+
+    it("createEmptyInitLibInt", async () => {
+      await utCU.createEmptyInitLibInt(COUNT_ITEMS);
+      console.log("create empty using array, use internal init func in lib", await utCU.gasUsed());
+    });
+
+    it("createEmptyInitLibExt", async () => {
+      await utCU.createEmptyInitLibExt(COUNT_ITEMS);
+      console.log("create empty using array, use external init func in lib", await utCU.gasUsed());
+    });
+
+    it("createCopy", async () => {
+      await utCU.createCopy(COUNT_ITEMS);
+      console.log("create through copy", await utCU.gasUsed());
+    });
+
+    it("createAll", async () => {
+      const r: IResults = await createAll(utCU);
+      console.log(r);
+    });
+  });
 
   describe("save to csv", () => {
     it("save", async () => {
       const rStruct4Int = await createAll(ut4);
       const rStruct10UInt = await createAll(ut10);
-      const rComplex1 = await createAll(utC1);
+      const rComplexOrdered = await createAll(utC1);
+      const rComplexUnordered = await createAll(utCU);
 
       SaveToCsv.save("./tmp/CreateTest.csv", [
         {title: "Struct4Int", obj: rStruct4Int},
         {title: "Struct10UInt", obj: rStruct10UInt},
-        {title: "Complex1", obj: rComplex1},
+        {title: "rComplexOrdered", obj: rComplexOrdered},
+        {title: "rComplexUnordered", obj: rComplexUnordered},
       ]);
     });
   });
