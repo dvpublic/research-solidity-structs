@@ -122,7 +122,7 @@ contract CreateComplexUnordered {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
       IDataTypes.ComplexUnordered memory data;
-      CreateLib._initComplexUnordered(data, i);
+      CreateLib._initComplexUnordered(data, count);
       destData.push(data);
     }
     gasUsed = gas0 - gasleft();
@@ -131,7 +131,7 @@ contract CreateComplexUnordered {
   function createEmptyInitLibExt(uint count) external  {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      IDataTypes.ComplexUnordered memory data = CreateLib.initComplexUnordered(i);
+      IDataTypes.ComplexUnordered memory data = CreateLib.initComplexUnordered(count);
       destData.push(data);
     }
     gasUsed = gas0 - gasleft();
@@ -140,7 +140,7 @@ contract CreateComplexUnordered {
   function createCopy(uint count) external  {
     IDataTypes.ComplexUnordered[] memory cache = new IDataTypes.ComplexUnordered[](count);
     for (uint i = 0; i < count; ++i) {
-      CreateLib._initComplexUnordered(cache[i], i);
+      CreateLib._initComplexUnordered(cache[i], count);
     }
 
     uint gas0 = gasleft();

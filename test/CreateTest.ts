@@ -1,9 +1,9 @@
 import {DeployerUtils} from "../scripts/utils/DeployerUtils";
 import {
   CreateComplexOrdered,
-  CreateComplexUnordered,
-  CreateStruct10UInt,
-  CreateStruct4Int
+  CreateComplexUnordered, CreateStruct10Int32,
+  CreateStruct10UInt, CreateStruct10UInt8,
+  CreateStruct4Int, CreateStruct5UInt
 } from "../typechain";
 import {ethers} from "hardhat";
 import {SignerWithAddress} from "@nomiclabs/hardhat-ethers/signers";
@@ -16,6 +16,9 @@ describe("CreateTest", () => {
   let signer: SignerWithAddress;
   let ut4: CreateStruct4Int;
   let ut10: CreateStruct10UInt;
+  let ut5: CreateStruct5UInt;
+  let ut10Int32: CreateStruct10Int32;
+  let ut10Uint8: CreateStruct10UInt8;
   let utC1: CreateComplexOrdered;
   let utCU: CreateComplexUnordered;
   let snapshot: string;
@@ -40,6 +43,9 @@ describe("CreateTest", () => {
     ut4 = (await DeployerUtils.deployContract(signer, 'CreateStruct4Int',)) as CreateStruct4Int;
     utC1 = (await DeployerUtils.deployContract(signer, 'CreateComplexOrdered',)) as CreateComplexOrdered;
     utCU = (await DeployerUtils.deployContract(signer, 'CreateComplexUnordered',)) as CreateComplexUnordered;
+    ut5 = (await DeployerUtils.deployContract(signer, 'CreateStruct5UInt',)) as CreateStruct5UInt;
+    ut10Int32 = (await DeployerUtils.deployContract(signer, 'CreateStruct10Int32',)) as CreateStruct10Int32;
+    ut10Uint8 = (await DeployerUtils.deployContract(signer, 'CreateStruct10UInt8',)) as CreateStruct10UInt8;
   })
 
   after(async function () {
@@ -55,7 +61,7 @@ describe("CreateTest", () => {
   });
 
   async function createAll(
-    ut: CreateStruct4Int | CreateStruct10UInt | CreateComplexOrdered | CreateComplexUnordered
+    ut: CreateStruct4Int | CreateStruct10UInt | CreateComplexOrdered | CreateComplexUnordered | CreateStruct5UInt | CreateStruct10Int32 | CreateStruct10UInt8
   ): Promise<IResults> {
     let r: IResults = {};
     await ut.createEmpty(COUNT_ITEMS);
@@ -323,10 +329,16 @@ describe("CreateTest", () => {
       const rStruct10UInt = await createAll(ut10);
       const rComplexOrdered = await createAll(utC1);
       const rComplexUnordered = await createAll(utCU);
+      const rStruct5UInt = await createAll(ut5);
+      const rStruct10Int32 = await createAll(ut10Int32);
+      const rStruct10Uint8 = await createAll(ut10Uint8);
 
       SaveToCsv.save("./tmp/CreateTest.csv", [
         {title: "Struct4Int", obj: rStruct4Int},
         {title: "Struct10UInt", obj: rStruct10UInt},
+        {title: "Struct5UInt", obj: rStruct5UInt},
+        {title: "Struct10Int32", obj: rStruct10Int32},
+        {title: "Struct10UInt8", obj: rStruct10Uint8},
         {title: "rComplexOrdered", obj: rComplexOrdered},
         {title: "rComplexUnordered", obj: rComplexUnordered},
       ]);

@@ -64,6 +64,14 @@ interface IDataTypes {
     int32 j;
   }
 
+  struct Struct5UInt {
+    uint a;
+    uint b;
+    uint c;
+    uint d;
+    uint e;
+  }
+
   struct Struct20UInt {
     uint a;
     uint b;

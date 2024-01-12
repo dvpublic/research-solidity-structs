@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: BUSL-1.1
 pragma solidity 0.8.4;
 
-import {IDataTypes} from "../interfaces/IDataTypes.sol";
-import "../libs/CreateLib.sol";
-import "../libs/PassLib.sol";
+import {IDataTypes} from "../../interfaces/IDataTypes.sol";
+import "../../libs/CreateLib.sol";
+import "../../libs/PassLib.sol";
 
 contract PassPureVars10Int32 {
   uint public gasUsed;

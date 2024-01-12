@@ -2,11 +2,11 @@ import {DeployerUtils} from "../scripts/utils/DeployerUtils";
 import {
   PassComplexOrdered, PassComplexUnordered, PassDynArrayInt32, PassDynArrayUint, PassDynArrayUint8, PassPureVars10Int32,
   PassPureVars10Uint,
-  PassPureVars10Uint8, PassPureVarsEmpty, PassStatArray10Int32,
+  PassPureVars10Uint8, PassPureVars5Uint, PassPureVarsEmpty, PassStatArray10Int32,
   PassStatArray10Uint,
-  PassStatArray10Uint8, PassStruct10Int32,
+  PassStatArray10Uint8, PassStatArray5Uint, PassStruct10Int32,
   PassStruct10Uint, PassStruct10UInt8, PassStruct1UInt, PassStruct20UInt, PassStruct30UInt,
-  PassStruct4Int
+  PassStruct4Int, PassStruct5Uint
 } from "../typechain";
 import {ethers} from "hardhat";
 import {SignerWithAddress} from "@nomiclabs/hardhat-ethers/signers";
@@ -14,7 +14,7 @@ import {TimeUtils} from "../scripts/utils/TimeUtils";
 import {SaveToCsv} from "../scripts/utils/SaveToCsv";
 import {IDataTypes} from "../typechain/libs/PassLib";
 
-describe("PassTest", () => {
+describe("PassToLibTest", () => {
   const COUNT_REPEAT = 1;
 
   let signer: SignerWithAddress;
@@ -29,6 +29,10 @@ describe("PassTest", () => {
   let utPV: PassPureVars10Uint;
   let utDA: PassDynArrayUint;
   let utSA: PassStatArray10Uint;
+
+  let utS5: PassStruct5Uint;
+  let utPV5: PassPureVars5Uint;
+  let utSA5: PassStatArray5Uint;
 
   let utS8: PassStruct10UInt8;
   let utPV8: PassPureVars10Uint8;
@@ -73,6 +77,10 @@ describe("PassTest", () => {
     utPV = (await DeployerUtils.deployContract(signer, 'PassPureVars10Uint',)) as PassPureVars10Uint;
     utDA = (await DeployerUtils.deployContract(signer, 'PassDynArrayUint',)) as PassDynArrayUint;
     utSA = (await DeployerUtils.deployContract(signer, 'PassStatArray10Uint',)) as PassStatArray10Uint;
+
+    utS5 = (await DeployerUtils.deployContract(signer, 'PassStruct5Uint',)) as PassStruct5Uint;
+    utPV5 = (await DeployerUtils.deployContract(signer, 'PassPureVars5Uint',)) as PassPureVars5Uint;
+    utSA5 = (await DeployerUtils.deployContract(signer, 'PassStatArray5Uint',)) as PassStatArray5Uint;
 
     utS8 = (await DeployerUtils.deployContract(signer, 'PassStruct10UInt8',)) as PassStruct10UInt8;
     utPV8 = (await DeployerUtils.deployContract(signer, 'PassPureVars10Uint8',)) as PassPureVars10Uint8;
@@ -241,8 +249,6 @@ describe("PassTest", () => {
 
     return r;
   }
-
-
   async function createPureVars10UintAll(ut: PassPureVars10Uint | PassPureVars10Uint8 | PassPureVars10Int32): Promise<IResults> {
     let r: IResults = {};
     await ut.callMemoryToMemoryInternal(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, COUNT_REPEAT);
@@ -259,44 +265,6 @@ describe("PassTest", () => {
 
     return r;
   }
-
-
-  function getDynArrayUIntStructSample(size: number): number[] {
-    return [...Array(size).keys()].map(x => x);
-  }
-  async function createDynArrayUIntAll(ut: PassDynArrayUint | PassDynArrayUint8 | PassDynArrayInt32, data: number[]): Promise<IResults> {
-    let r: IResults = {};
-    await ut.callMemoryToMemoryInternal(data, COUNT_REPEAT);
-    r.callM2MInternal = (await ut.gasUsed()).toNumber();
-
-    await ut.callMemoryToMemoryPublic(data, COUNT_REPEAT);
-    r.callM2MPublic = (await ut.gasUsed()).toNumber();
-
-    await ut.callCalldataToCalldataInternal(data, COUNT_REPEAT);
-    r.callC2CInternal = (await ut.gasUsed()).toNumber();
-
-    await ut.callCalldataToCalldataPublic(data, COUNT_REPEAT);
-    r.callC2CPublic = (await ut.gasUsed()).toNumber();
-
-    await ut.callCalldataToMemoryInternal(data, COUNT_REPEAT);
-    r.callC2MInternal = (await ut.gasUsed()).toNumber();
-
-    await ut.callCalldataToMemoryPublic(data, COUNT_REPEAT);
-    r.callC2MPublic = (await ut.gasUsed()).toNumber();
-
-    await ut.callMemoryToMemoryLibExt(data, COUNT_REPEAT);
-    r.callM2MLibExt = (await ut.gasUsed()).toNumber();
-
-    await ut.callMemoryToCalldataLibExt(data, COUNT_REPEAT);
-    r.callM2CLibExt = (await ut.gasUsed()).toNumber();
-
-    await ut.callMemoryToMemoryLibInt(data, COUNT_REPEAT);
-    r.callM2MLibInt = (await ut.gasUsed()).toNumber();
-
-    return r;
-  }
-
-
   function getStatArray10UIntStructSample(): number[] {
     return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   }
@@ -332,6 +300,40 @@ describe("PassTest", () => {
     return r;
   }
 
+  function getDynArrayUIntStructSample(size: number): number[] {
+    return [...Array(size).keys()].map(x => x);
+  }
+  async function createDynArrayUIntAll(ut: PassDynArrayUint | PassDynArrayUint8 | PassDynArrayInt32, data: number[]): Promise<IResults> {
+    let r: IResults = {};
+    await ut.callMemoryToMemoryInternal(data, COUNT_REPEAT);
+    r.callM2MInternal = (await ut.gasUsed()).toNumber();
+
+    await ut.callMemoryToMemoryPublic(data, COUNT_REPEAT);
+    r.callM2MPublic = (await ut.gasUsed()).toNumber();
+
+    await ut.callCalldataToCalldataInternal(data, COUNT_REPEAT);
+    r.callC2CInternal = (await ut.gasUsed()).toNumber();
+
+    await ut.callCalldataToCalldataPublic(data, COUNT_REPEAT);
+    r.callC2CPublic = (await ut.gasUsed()).toNumber();
+
+    await ut.callCalldataToMemoryInternal(data, COUNT_REPEAT);
+    r.callC2MInternal = (await ut.gasUsed()).toNumber();
+
+    await ut.callCalldataToMemoryPublic(data, COUNT_REPEAT);
+    r.callC2MPublic = (await ut.gasUsed()).toNumber();
+
+    await ut.callMemoryToMemoryLibExt(data, COUNT_REPEAT);
+    r.callM2MLibExt = (await ut.gasUsed()).toNumber();
+
+    await ut.callMemoryToCalldataLibExt(data, COUNT_REPEAT);
+    r.callM2CLibExt = (await ut.gasUsed()).toNumber();
+
+    await ut.callMemoryToMemoryLibInt(data, COUNT_REPEAT);
+    r.callM2MLibInt = (await ut.gasUsed()).toNumber();
+
+    return r;
+  }
 
   function getStruct20UIntStructSample(): IDataTypes.Struct20UIntStruct {
     return {
@@ -388,7 +390,6 @@ describe("PassTest", () => {
 
     return r;
   }
-
 
   function getStruct30UIntStructSample(): IDataTypes.Struct30UIntStruct {
     return {
@@ -508,6 +509,96 @@ describe("PassTest", () => {
     return r;
   }
 
+  function getStruct5UIntStructSample(): IDataTypes.Struct5UIntStruct {
+    return {
+      a: 1,
+      b: 2,
+      c: 3,
+      d: 4,
+      e: 5,
+    }
+  }
+  async function createStruct5UIntAll(ut: PassStruct5Uint, data: IDataTypes.Struct5UIntStruct): Promise<IResults> {
+    let r: IResults = {};
+    await ut.callMemoryToMemoryInternal(data, COUNT_REPEAT);
+    r.callM2MInternal = (await ut.gasUsed()).toNumber();
+
+    await ut.callMemoryToMemoryPublic(data, COUNT_REPEAT);
+    r.callM2MPublic = (await ut.gasUsed()).toNumber();
+
+    await ut.callCalldataToCalldataInternal(data, COUNT_REPEAT);
+    r.callC2CInternal = (await ut.gasUsed()).toNumber();
+
+    await ut.callCalldataToCalldataPublic(data, COUNT_REPEAT);
+    r.callC2CPublic = (await ut.gasUsed()).toNumber();
+
+    await ut.callCalldataToMemoryInternal(data, COUNT_REPEAT);
+    r.callC2MInternal = (await ut.gasUsed()).toNumber();
+
+    await ut.callCalldataToMemoryPublic(data, COUNT_REPEAT);
+    r.callC2MPublic = (await ut.gasUsed()).toNumber();
+
+    await ut.callMemoryToMemoryLibExt(data, COUNT_REPEAT);
+    r.callM2MLibExt = (await ut.gasUsed()).toNumber();
+
+    await ut.callMemoryToCalldataLibExt(data, COUNT_REPEAT);
+    r.callM2CLibExt = (await ut.gasUsed()).toNumber();
+
+    await ut.callMemoryToMemoryLibInt(data, COUNT_REPEAT);
+    r.callM2MLibInt = (await ut.gasUsed()).toNumber();
+
+    return r;
+  }
+  async function createPureVars5UintAll(ut: PassPureVars5Uint): Promise<IResults> {
+    let r: IResults = {};
+    await ut.callMemoryToMemoryInternal(0, 1, 2, 3, 4, COUNT_REPEAT);
+    r.callM2MInternal = (await ut.gasUsed()).toNumber();
+
+    await ut.callMemoryToMemoryPublic(0, 1, 2, 3, 4, COUNT_REPEAT);
+    r.callM2MPublic = (await ut.gasUsed()).toNumber();
+
+    await ut.callMemoryToMemoryLibExt(0, 1, 2, 3, 4, COUNT_REPEAT);
+    r.callM2MLibExt = (await ut.gasUsed()).toNumber();
+
+    await ut.callMemoryToMemoryLibInt(0, 1, 2, 3, 4, COUNT_REPEAT);
+    r.callM2MLibInt = (await ut.gasUsed()).toNumber();
+
+    return r;
+  }
+  function getStatArray5UIntStructSample(): number[] {
+    return [0, 1, 2, 3, 4];
+  }
+  async function createStatArray5UIntAll(ut: PassStatArray5Uint, data: number[]): Promise<IResults> {
+    let r: IResults = {};
+    await ut.callMemoryToMemoryInternal([data[0], data[1], data[2], data[3], data[4]], COUNT_REPEAT);
+    r.callM2MInternal = (await ut.gasUsed()).toNumber();
+
+    await ut.callMemoryToMemoryPublic([data[0], data[1], data[2], data[3], data[4]], COUNT_REPEAT);
+    r.callM2MPublic = (await ut.gasUsed()).toNumber();
+
+    await ut.callCalldataToCalldataInternal([data[0], data[1], data[2], data[3], data[4]], COUNT_REPEAT);
+    r.callC2CInternal = (await ut.gasUsed()).toNumber();
+
+    await ut.callCalldataToCalldataPublic([data[0], data[1], data[2], data[3], data[4]], COUNT_REPEAT);
+    r.callC2CPublic = (await ut.gasUsed()).toNumber();
+
+    await ut.callCalldataToMemoryInternal([data[0], data[1], data[2], data[3], data[4]], COUNT_REPEAT);
+    r.callC2MInternal = (await ut.gasUsed()).toNumber();
+
+    await ut.callCalldataToMemoryPublic([data[0], data[1], data[2], data[3], data[4]], COUNT_REPEAT);
+    r.callC2MPublic = (await ut.gasUsed()).toNumber();
+
+    await ut.callMemoryToMemoryLibExt([data[0], data[1], data[2], data[3], data[4]], COUNT_REPEAT);
+    r.callM2MLibExt = (await ut.gasUsed()).toNumber();
+
+    await ut.callMemoryToCalldataLibExt([data[0], data[1], data[2], data[3], data[4]], COUNT_REPEAT);
+    r.callM2CLibExt = (await ut.gasUsed()).toNumber();
+
+    await ut.callMemoryToMemoryLibInt([data[0], data[1], data[2], data[3], data[4]], COUNT_REPEAT);
+    r.callM2MLibInt = (await ut.gasUsed()).toNumber();
+
+    return r;
+  }
 
   describe("PassStruct4Int", () => {
     it("callMemoryToMemoryInternal", async () => {
@@ -1401,6 +1492,11 @@ describe("PassTest", () => {
       const rDynArray10Uint = await createDynArrayUIntAll(utDA, getDynArrayUIntStructSample(10));
       const rDynArray20Uint = await createDynArrayUIntAll(utDA, getDynArrayUIntStructSample(20));
 
+      const rStruct5UInt = await createStruct5UIntAll(utS5, getStruct5UIntStructSample());
+      const rPureVars5Uint = await await createPureVars5UintAll(utPV5);
+      const rStatArray5Uint = await createStatArray5UIntAll(utSA5, getStatArray5UIntStructSample());
+      const rDynArray5Uint = await createDynArrayUIntAll(utDA, getDynArrayUIntStructSample(5));
+
       const rStruct10UInt8 = await createStruct10UIntAll(utS8, getStruct10UIntStructSample());
       const rPureVars8 = await await createPureVars10UintAll(utPV8);
       const rStatArray10Uint8 = await createStatArray10UIntAll(utSA8, getStatArray10UIntStructSample());
@@ -1424,9 +1520,14 @@ describe("PassTest", () => {
         {title: "ComplexUnordered 0-items", obj: rComplexUnordered0},
         {title: "ComplexUnordered 100-items", obj: rComplexUnordered100},
 
+        {title: "Struct5UInt256", obj: rStruct5UInt},
         {title: "Struct10UInt256", obj: rStruct10UInt},
         {title: "Struct20UInt256", obj: rStruct20UInt},
         {title: "Struct30UInt256", obj: rStruct30UInt},
+
+        {title: "PureVars5Uint256", obj: rPureVars5Uint},
+        {title: "StatArray5Uint256", obj: rStatArray5Uint},
+        {title: "DynArray5Uint256", obj: rDynArray5Uint},
 
         {title: "PureVars10Uint256", obj: rPureVars10Uint},
         {title: "StatArray10Uint256", obj: rStatArray10Uint},

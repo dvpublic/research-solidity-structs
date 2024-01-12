@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: BUSL-1.1
 pragma solidity 0.8.4;
 
-import {IDataTypes} from "../interfaces/IDataTypes.sol";
-import "../libs/CreateLib.sol";
-import "../libs/PassLib.sol";
+import {IDataTypes} from "../../interfaces/IDataTypes.sol";
+import "../../libs/CreateLib.sol";
+import "../../libs/PassLib.sol";
 
-contract PassStatArray10Uint8 {
+contract PassStatArray10Int32 {
   uint public gasUsed;
 
-  function callMemoryToMemoryInternal(uint8[10] memory data, uint count) external {
+  function callMemoryToMemoryInternal(int32[10] memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
       receiveAsMemoryInternal(data);
@@ -16,7 +16,7 @@ contract PassStatArray10Uint8 {
     gasUsed = gas0 - gasleft();
   }
 
-  function callMemoryToMemoryPublic(uint8[10] memory data, uint count) external {
+  function callMemoryToMemoryPublic(int32[10] memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
       receiveAsMemoryPublic(data);
@@ -24,7 +24,7 @@ contract PassStatArray10Uint8 {
     gasUsed = gas0 - gasleft();
   }
 
-  function callCalldataToCalldataInternal(uint8[10] calldata data, uint count) external {
+  function callCalldataToCalldataInternal(int32[10] calldata data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
       receiveAsCalldataInternal(data);
@@ -32,7 +32,7 @@ contract PassStatArray10Uint8 {
     gasUsed = gas0 - gasleft();
   }
 
-  function callCalldataToCalldataPublic(uint8[10] calldata data, uint count) external {
+  function callCalldataToCalldataPublic(int32[10] calldata data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
       receiveAsCalldataPublic(data);
@@ -40,7 +40,7 @@ contract PassStatArray10Uint8 {
     gasUsed = gas0 - gasleft();
   }
 
-  function callCalldataToMemoryInternal(uint8[10] calldata data, uint count) external {
+  function callCalldataToMemoryInternal(int32[10] calldata data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
       receiveAsMemoryInternal(data);
@@ -48,7 +48,7 @@ contract PassStatArray10Uint8 {
     gasUsed = gas0 - gasleft();
   }
 
-  function callCalldataToMemoryPublic(uint8[10] calldata data, uint count) external {
+  function callCalldataToMemoryPublic(int32[10] calldata data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
       receiveAsMemoryPublic(data);
@@ -56,43 +56,43 @@ contract PassStatArray10Uint8 {
     gasUsed = gas0 - gasleft();
   }
 
-  function callMemoryToMemoryLibExt(uint8[10] memory data, uint count) external {
+  function callMemoryToMemoryLibExt(int32[10] memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      PassLib.useStatArray10UInt8Memory(data);
+      PassLib.useStatArray10Int32Memory(data);
     }
     gasUsed = gas0 - gasleft();
   }
 
-  function callMemoryToCalldataLibExt(uint8[10] memory data, uint count) external {
+  function callMemoryToCalldataLibExt(int32[10] memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      PassLib.useStatArray10UInt8Calldata(data);
+      PassLib.useStatArray10Int32Calldata(data);
     }
     gasUsed = gas0 - gasleft();
   }
 
-  function callMemoryToMemoryLibInt(uint8[10] memory data, uint count) external {
+  function callMemoryToMemoryLibInt(int32[10] memory data, uint count) external {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      PassLib._useStatArray10UInt8Memory(data);
+      PassLib._useStatArray10Int32Memory(data);
     }
     gasUsed = gas0 - gasleft();
   }
 
-  function receiveAsMemoryInternal(uint8[10] memory m) internal pure returns (uint) {
+  function receiveAsMemoryInternal(int32[10] memory m) internal pure returns (uint) {
     m; // hide warning
     return 0;
   }
-  function receiveAsMemoryPublic(uint8[10] memory m) public pure returns (uint) {
+  function receiveAsMemoryPublic(int32[10] memory m) public pure returns (uint) {
     m; // hide warning
     return 0;
   }
-  function receiveAsCalldataInternal(uint8[10] calldata m) internal pure returns (uint) {
+  function receiveAsCalldataInternal(int32[10] calldata m) internal pure returns (uint) {
     m; // hide warning
     return 0;
   }
-  function receiveAsCalldataPublic(uint8[10] calldata m) public pure returns (uint) {
+  function receiveAsCalldataPublic(int32[10] calldata m) public pure returns (uint) {
     m; // hide warning
     return 0;
   }

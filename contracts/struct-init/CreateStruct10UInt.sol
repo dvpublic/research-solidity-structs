@@ -89,7 +89,7 @@ contract CreateStruct10UInt {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
       IDataTypes.Struct10UInt memory data;
-      CreateLib._initStruct10UInt(data, i);
+      CreateLib._initStruct10UInt(data);
       destData.push(data);
     }
     gasUsed = gas0 - gasleft();
@@ -98,7 +98,7 @@ contract CreateStruct10UInt {
   function createEmptyInitLibExt(uint count) external  {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      IDataTypes.Struct10UInt memory data = CreateLib.initStruct10UInt(i);
+      IDataTypes.Struct10UInt memory data = CreateLib.initStruct10UInt();
       destData.push(data);
     }
     gasUsed = gas0 - gasleft();
@@ -107,7 +107,7 @@ contract CreateStruct10UInt {
   function createCopy(uint count) external  {
     IDataTypes.Struct10UInt[] memory cache = new IDataTypes.Struct10UInt[](count);
     for (uint i = 0; i < count; ++i) {
-      CreateLib._initStruct10UInt(cache[i], i);
+      CreateLib._initStruct10UInt(cache[i]);
     }
 
     uint gas0 = gasleft();

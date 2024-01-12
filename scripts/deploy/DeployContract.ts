@@ -5,12 +5,16 @@ import { Logger } from 'tslog';
 import logSettings from '../../log_settings';
 import { formatUnits, parseUnits } from 'ethers/lib/utils';
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
+import {CreateStruct5UInt} from "../../typechain";
 
 export const WAIT_BLOCKS_BETWEEN_DEPLOY = 50;
 
 const libraries = new Map<string, string[]>([
   ["CreateStruct4Int", ["CreateLib"]],
   ["CreateStruct10UInt", ["CreateLib"]],
+  ["CreateStruct5UInt", ["CreateLib"]],
+  ["CreateStruct10Int32", ["CreateLib"]],
+  ["CreateStruct10UInt8", ["CreateLib"]],
   ["CreateComplexOrdered", ["CreateLib"]],
   ["CreateComplexUnordered", ["CreateLib"]],
   ["PassStruct4Int", ["PassLib"]],
@@ -26,6 +30,10 @@ const libraries = new Map<string, string[]>([
   ["PassPureVars10Uint8", ["PassLib"]],
   ["PassDynArrayUint8", ["PassLib"]],
   ["PassStatArray10Uint8", ["PassLib"]],
+
+  ["PassStruct5Uint", ["PassLib"]],
+  ["PassPureVars5Uint", ["PassLib"]],
+  ["PassStatArray5Uint", ["PassLib"]],
 
   ["PassStruct10Int32", ["PassLib"]],
   ["PassPureVars10Int32", ["PassLib"]],

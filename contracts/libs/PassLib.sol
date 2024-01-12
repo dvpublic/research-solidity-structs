@@ -31,6 +31,21 @@ library PassLib {
     return 0;
   }
 
+
+  function _useStruct5UIntMemory(IDataTypes.Struct5UInt memory dest) internal pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+  function useStruct5UIntMemory(IDataTypes.Struct5UInt memory dest) external pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+  function useStruct5UIntCalldata(IDataTypes.Struct5UInt calldata dest) external pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+
+
   function _useStruct20UIntMemory(IDataTypes.Struct20UInt memory dest) internal pure returns (uint) {
     dest; // hide warning
     return 0;
@@ -95,6 +110,14 @@ library PassLib {
   }
 
 
+  function _usePureVars5UIntMemory(uint, uint, uint, uint, uint) internal pure returns (uint) {
+    return 0;
+  }
+  function usePureVars5UIntMemory(uint, uint, uint, uint, uint) external pure returns (uint) {
+    return 0;
+  }
+
+
   function _useDynArrayUIntMemory(uint[] memory dest) internal pure returns (uint) {
     dest; // hide warning
     return 0;
@@ -122,6 +145,20 @@ library PassLib {
     return 0;
   }
 
+
+
+  function _useStatArray5UIntMemory(uint[5] memory dest) internal pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+  function useStatArray5UIntMemory(uint[5] memory dest) external pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
+  function useStatArray5UIntCalldata(uint[5] calldata dest) external pure returns (uint) {
+    dest; // hide warning
+    return 0;
+  }
 
 
   function _useStruct10UInt8Memory(IDataTypes.Struct10UInt8 memory dest) internal pure returns (uint) {

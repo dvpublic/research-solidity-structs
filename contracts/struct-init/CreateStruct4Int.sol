@@ -85,7 +85,7 @@ contract CreateStruct4Int {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
       IDataTypes.Struct4Int memory data;
-      CreateLib._initStruct4Int(data, int32(int256((i))));
+      CreateLib._initStruct4Int(data);
       destData.push(data);
     }
     gasUsed = gas0 - gasleft();
@@ -94,7 +94,7 @@ contract CreateStruct4Int {
   function createEmptyInitLibExt(uint count) external  {
     uint gas0 = gasleft();
     for (uint i = 0; i < count; ++i) {
-      IDataTypes.Struct4Int memory data = CreateLib.initStruct4Int(int32(int256((i))));
+      IDataTypes.Struct4Int memory data = CreateLib.initStruct4Int();
       destData.push(data);
     }
     gasUsed = gas0 - gasleft();
@@ -103,7 +103,7 @@ contract CreateStruct4Int {
   function createCopy(uint count) external  {
     IDataTypes.Struct4Int[] memory cache = new IDataTypes.Struct4Int[](count);
     for (uint i = 0; i < count; ++i) {
-      CreateLib._initStruct4Int(cache[i], int32(int256((i))));
+      CreateLib._initStruct4Int(cache[i]);
     }
 
     uint gas0 = gasleft();
