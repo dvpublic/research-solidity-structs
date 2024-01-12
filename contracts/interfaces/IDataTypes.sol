@@ -64,6 +64,45 @@ interface IDataTypes {
     int32 j;
   }
 
+  struct Struct10Uint32 {
+    uint32 a;
+    uint32 b;
+    uint32 c;
+    uint32 d;
+    uint32 e;
+    uint32 f;
+    uint32 g;
+    uint32 h;
+    uint32 i;
+    uint32 j;
+  }
+
+  struct Struct10Uint16 {
+    uint16 a;
+    uint16 b;
+    uint16 c;
+    uint16 d;
+    uint16 e;
+    uint16 f;
+    uint16 g;
+    uint16 h;
+    uint16 i;
+    uint16 j;
+  }
+
+  struct Struct10Uint64 {
+    uint64 a;
+    uint64 b;
+    uint64 c;
+    uint64 d;
+    uint64 e;
+    uint64 f;
+    uint64 g;
+    uint64 h;
+    uint64 i;
+    uint64 j;
+  }
+
   struct Struct5UInt {
     uint a;
     uint b;
