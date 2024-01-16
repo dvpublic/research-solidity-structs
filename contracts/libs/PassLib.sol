@@ -3,6 +3,21 @@ pragma solidity 0.8.4;
 
 import {IDataTypes} from "../interfaces/IDataTypes.sol";
 
+/**
+TODO:
+
+struct S {
+uint8 v1;
+uint8 v2;
+uint8 v3;
+uint8 v4;
+}
+
+VS
+
+bytes32 packed uint8
+*/
+
 library PassLib {
   function _useStruct4IntMemory(IDataTypes.Struct4Int memory dest) internal pure returns (int) {
     dest; // hide warning
